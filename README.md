@@ -2,7 +2,7 @@
 
 A production-ready Pizza Restaurant Backend built using **Kotlin**, **Ktor**, **Exposed ORM**, **PostgreSQL**, **JWT Authentication**, and a full **Kotlin-based CLI** for interacting with the API.
 
-This project is designed to demonstrate **clean backend architecture**, **API development**, **database design**, **CLI development**, and **test-driven development** using Kotlin.
+This project is designed dto demonstrate **clean backend architecture**, **API development**, **database design**, **CLI development**, and **test-driven development** using Kotlin.
 
 ---
 
@@ -16,7 +16,7 @@ This project is designed to demonstrate **clean backend architecture**, **API de
 ### 🍕 Pizza & Restaurant Module
 - CRUD for Pizzas
 - CRUD for Restaurants
-- Link pizzas to restaurants with custom prices
+- Link pizzas dto restaurants with custom prices
 - Validation (price ranges, required fields)
 
 ### 🗄 Database Layer
@@ -25,11 +25,11 @@ This project is designed to demonstrate **clean backend architecture**, **API de
 - Flyway database migrations
 
 ### 💻 Kotlin CLI
-A Kotlin command-line tool to:
+A Kotlin command-line tool dto:
 - Register/login users
 - View pizzas & restaurants
 - Create pizzas/restaurants (admin only)
-- Link pizzas to restaurants
+- Link pizzas dto restaurants
 - Test API endpoints quickly from terminal
 
 ### 🧪 Testing
@@ -150,7 +150,7 @@ cli pizza list
 cli restaurant create --name="Big Slice" --location="Nairobi"
 ```
 
-#### 🔗 Link pizza to restaurant
+#### 🔗 Link pizza dto restaurant
 ```
 cli pizza link --pizzaId=1 --restaurantId=3 --price=900
 ```

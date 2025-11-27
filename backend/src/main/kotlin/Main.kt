@@ -1,16 +1,49 @@
 package com.emmascode
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+import com.emmascode.config.DatabaseFactory
+import com.emmascode.routes.orderItemRoutes
+import com.emmascode.routes.orderRoutes
+import com.emmascode.routes.pizzaRoutes
+import com.emmascode.routes.restaurantPizzaRoutes
+import com.emmascode.routes.restaurantRoutes
+import com.emmascode.routes.userRoutes
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
+import io.ktor.server.application.*
+import io.ktor.server.routing.*
+import io.ktor.server.response.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.*
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+fun main() {
+    // Initialize database and create tables
+    DatabaseFactory.init()
+
+    // Start Ktor Server
+    embeddedServer(Netty, host = "0.0.0.0", port = 8080) {
+        install(ContentNegotiation) { json() }
+
+        routing {
+            userRoutes()
+            pizzaRoutes()
+            orderRoutes()
+            restaurantRoutes()
+            restaurantPizzaRoutes()
+            orderItemRoutes()
+            get("/") {
+                call.respond(
+                    mapOf(
+                        "status" to "Backend running 🎉",
+                        "db" to "Connected successfully"
+                    )
+                )
+            }
+
+            // You can add your other routes here, e.g.:
+            // userRoutes()
+            // pizzaRoutes()
+            // restaurantRoutes()
+        }
+    }.start(wait = true)
 }
+
