@@ -1,0 +1,13 @@
+#!/bin/bash
+# Pizza Palace CLI Wrapper Script
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+JAR_PATH="$SCRIPT_DIR/build/libs/cli-1.0-SNAPSHOT-all.jar"
+
+if [ ! -f "$JAR_PATH" ]; then
+    echo "Error: JAR file not found at $JAR_PATH"
+    echo "Please run ./setup.sh first"
+    exit 1
+fi
+
+java -jar "$JAR_PATH" "$@"

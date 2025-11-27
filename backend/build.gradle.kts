@@ -3,6 +3,7 @@ plugins {
     kotlin("jvm") version "2.2.0"
     kotlin("plugin.serialization") version "2.2.0"
     application
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "com.emmascode"
